@@ -1,27 +1,27 @@
 // filter
-$("document").ready(function(){
-    $(".filter-item").click(function(){
+$("document").ready(function () {
+  $(".filter-item").click(function () {
+    const value = $(this).attr("data-filter");
 
-        const value = $(this).attr('data-filter');
+    if (value == "all") {
+      $(".post-box").show("1000");
+    } else {
+      $(".post-box")
+        .not("." + value)
+        .hide("1000");
 
-        if (value=="all"){
-            $(".post-box").show("1000");
-        }else{
-            $(".post-box").not("."+value).hide("1000");
+      $(".post-box")
+        .filter("." + value)
+        .show("1000");
+    }
 
-            $(".post-box").filter("."+value).show("1000");
-        }
-
-        $(this).siblings().removeClass("active-filter");
-        $(this).addClass("active-filter");
-
-    });
-
+    $(this).siblings().removeClass("active-filter");
+    $(this).addClass("active-filter");
+  });
 });
 
-let header = document.querySelector('header');
+let header = document.querySelector("header");
 
-window.addEventListener("scroll",()=>{
-    header.classList.toggle("shadow",window.scrollY > 0);
-
-    });
+window.addEventListener("scroll", () => {
+  header.classList.toggle("shadow", window.scrollY > 0);
+});
